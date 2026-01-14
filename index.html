@@ -23,22 +23,22 @@
 
     h1 {
       color: #b00020;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 12px 26px;
       font-size: 18px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.25s ease;
     }
 
     .yes {
@@ -51,81 +51,75 @@
       color: white;
     }
 
-    .poem {
-      font-size: 22px;
+    .message {
+      margin-top: 25px;
+      font-size: 20px;
       color: #8b0033;
-      line-height: 1.6;
     }
 
-    .reward {
-      margin-top: 20px;
-      font-size: 24px;
-    }
-
-    .reward a {
-      display: block;
+    a {
+      display: inline-block;
       margin-top: 10px;
-      font-size: 16px;
       color: #b00020;
       text-decoration: none;
+      font-size: 16px;
     }
 
-    .reward a:hover {
+    a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <div class="container" id="app">
-    <h1>Will you please forgive me?</h1>
+  <div class="container">
+    <h1 id="question">Will you please forgive me?</h1>
 
     <div class="buttons">
       <button class="yes" onclick="yesClick()">Yes</button>
       <button class="no" onclick="noClick()">No</button>
     </div>
+
+    <div class="message" id="message"></div>
   </div>
 
   <script>
-    const noTexts = [
-      "No",
+    const noMessages = [
       "You sure?",
       "Think again",
       "Still no?",
-      "You’re testing me 😌",
-      "Okay this is cute",
-      "Last no?"
+      "You’re making this hard 😌",
+      "Okay but I’m patient",
+      "Last chance… maybe"
     ];
 
-    let noIndex = 0;
-    let yesSize = 18;
+    let noCount = 0;
 
     function noClick() {
-      const noBtn = document.querySelector(".no");
-      const yesBtn = document.querySelector(".yes");
+      const msg = document.getElementById("message");
 
-      noIndex = Math.min(noIndex + 1, noTexts.length - 1);
-      noBtn.textContent = noTexts[noIndex];
+      msg.textContent =
+        noMessages[Math.min(noCount, noMessages.length - 1)];
 
-      yesSize += 4;
-      yesBtn.style.fontSize = yesSize + "px";
+      noCount++;
     }
 
     function yesClick() {
-      document.getElementById("app").innerHTML = `
-        <div class="poem">
-          I knew you would hesitate,<br>
-          you always like the tension.<br>
-          You said yes a little late,<br>
-          but right on time for me.
-        </div>
+      const question = document.getElementById("question");
+      const message = document.getElementById("message");
 
-        <div class="reward">
-          Yay. You get a Porsche 🚗😉
-          <a href="https://www.porsche.com" target="_blank">
-            Go choose your Porsche →
-          </a>
-        </div>
+      question.innerHTML = `
+        I knew you would hesitate,<br>
+        you always like the tension.<br>
+        You said yes a little late,<br>
+        but right on time for me.
+      `;
+
+      message.innerHTML = `
+        Yay. You get a Porsche 🚗😉<br>
+        <a href="https://www.porsche.com" target="_blank">
+          Go choose your Porsche →
+        </a>
       `;
     }
   </script>
