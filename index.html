@@ -4,100 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Valentine?</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f6dcdc;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    h1 {
-      color: #b00020;
-      margin-bottom: 20px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    button {
-      padding: 12px 24px;
-      font-size: 18px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .yes-button {
-      background-color: #4caf50;
-      color: white;
-    }
-
-    .no-button {
-      background-color: #e53935;
-      color: white;
-    }
-
-    .cat {
-      font-size: 80px;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Will you be my Valentine?</h1>
+  <h1>Will you be my Valentine?</h1>
 
-    <div class="buttons">
-      <button class="yes-button" onclick="handleYesClick()">Yes</button>
-      <button class="no-button" onclick="handleNoClick()">No</button>
-    </div>
-
-    <div class="cat">🐱</div>
-  </div>
-
-  <script>
-    const messages = [
-      "No",
-      "Really sure?",
-      "Think again",
-      "Are you positive?",
-      "Last chance",
-      "Okay but… why?",
-      "You sure about that?"
-    ];
-
-    let messageIndex = 1;
-
-    function handleNoClick() {
-      const noButton = document.querySelector(".no-button");
-      const yesButton = document.querySelector(".yes-button");
-
-      noButton.textContent = messages[messageIndex];
-      messageIndex = (messageIndex + 1) % messages.length;
-
-      const currentSize = parseFloat(
-        window.getComputedStyle(yesButton).fontSize
-      );
-
-      yesButton.style.fontSize = `${currentSize * 1.4}px`;
-    }
-
-    function handleYesClick() {
-      document.body.innerHTML =
-        "<h1 style='color:#d81b60'>Yay 💖</h1>";
-    }
-  </script>
+  <button onclick="alert('Yay 💖')">Yes</button>
+  <button>No</button>
 </body>
 </html>
