@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Just One Question</title>
+  <title>Just One Question ❤️</title>
 
   <style>
     body {
@@ -19,6 +19,7 @@
     .container {
       text-align: center;
       max-width: 90%;
+      position: relative;
     }
 
     h1 {
@@ -30,6 +31,8 @@
       display: flex;
       justify-content: center;
       gap: 15px;
+      position: relative;
+      height: 80px;
     }
 
     button {
@@ -49,6 +52,7 @@
     .no-button {
       background-color: #e53935;
       color: white;
+      position: relative;
     }
 
     .poem {
@@ -70,7 +74,6 @@
       color: #b00020;
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
     }
 
     .porsche a:hover {
@@ -90,52 +93,31 @@
   </div>
 
   <script>
-    const messages = [
+    const noMessages = [
       "No",
-      "You sure?",
-      "Think again",
-      "Really sure?",
-      "Come on 😭",
-      "Please?",
-      "Last chance"
+      "You’re stubborn 😌",
+      "Still thinking?",
+      "Playing hard to get?",
+      "I admire the resistance",
+      "Okay wow 😳",
+      "This is getting cute",
+      "Alright… last no?"
     ];
 
-    let messageIndex = 1;
+    let noCount = 0;
 
     function handleNo() {
       const noButton = document.querySelector(".no-button");
       const yesButton = document.querySelector(".yes-button");
 
-      noButton.textContent = messages[messageIndex];
-      messageIndex = (messageIndex + 1) % messages.length;
+      // Change No text
+      noButton.textContent =
+        noMessages[Math.min(noCount, noMessages.length - 1)];
 
+      // Grow Yes gently
       const currentSize = parseFloat(
         window.getComputedStyle(yesButton).fontSize
       );
+      yesButton.style.fontSize = `${currentSize * 1.25}px`;
 
-      yesButton.style.fontSize = `${currentSize * 1.3}px`;
-    }
-
-    function handleYes() {
-      const content = document.getElementById("content");
-
-      content.innerHTML = `
-        <div class="poem">
-          I knew you would hesitate,<br/>
-          you always like the tension.<br/>
-          You said yes a little late,<br/>
-          but right on time for me.
-        </div>
-
-        <div class="porsche">
-          Yay.<br/>
-          You get a Porsche 🚗😉<br/>
-          <a href="https://www.porsche.com" target="_blank">
-            Go pick your Porsche →
-          </a>
-        </div>
-      `;
-    }
-  </script>
-</body>
-</html>
+      // After 3 clicks, No starts
