@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Just One Question ❤️</title>
+  <title>One Question ❤️</title>
 
   <style>
     body {
@@ -12,27 +12,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f6dcdc;
+      background: #f6dcdc;
       font-family: Arial, sans-serif;
     }
 
     .container {
       text-align: center;
       max-width: 90%;
-      position: relative;
     }
 
     h1 {
       color: #b00020;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      position: relative;
-      height: 80px;
+      gap: 16px;
     }
 
     button {
@@ -41,18 +38,17 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
-    .yes-button {
-      background-color: #4caf50;
+    .yes {
+      background: #4caf50;
       color: white;
     }
 
-    .no-button {
-      background-color: #e53935;
+    .no {
+      background: #e53935;
       color: white;
-      position: relative;
     }
 
     .poem {
@@ -61,91 +57,73 @@
       line-height: 1.6;
     }
 
-    .porsche {
+    .reward {
       margin-top: 20px;
       font-size: 24px;
-      color: #333;
     }
 
-    .porsche a {
-      display: inline-block;
+    .reward a {
+      display: block;
       margin-top: 10px;
       font-size: 16px;
       color: #b00020;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
     }
 
-    .porsche a:hover {
-      border-color: #b00020;
+    .reward a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <div class="container" id="content">
+  <div class="container" id="app">
     <h1>Will you please forgive me?</h1>
 
     <div class="buttons">
-      <button class="yes-button" onclick="handleYes()">Yes</button>
-      <button class="no-button" onclick="handleNo()">No</button>
+      <button class="yes" onclick="yesClick()">Yes</button>
+      <button class="no" onclick="noClick()">No</button>
     </div>
   </div>
 
   <script>
-    const noMessages = [
+    const noTexts = [
       "No",
-      "You’re stubborn 😌",
-      "Still thinking?",
-      "Playing hard to get?",
-      "I admire the resistance",
-      "Okay wow 😳",
-      "This is getting cute",
-      "Alright… last no?"
+      "You sure?",
+      "Think again",
+      "Still no?",
+      "You’re testing me 😌",
+      "Okay this is cute",
+      "Last no?"
     ];
 
-    let noCount = 0;
+    let noIndex = 0;
+    let yesSize = 18;
 
-    function handleNo() {
-      const noButton = document.querySelector(".no-button");
-      const yesButton = document.querySelector(".yes-button");
+    function noClick() {
+      const noBtn = document.querySelector(".no");
+      const yesBtn = document.querySelector(".yes");
 
-      // Change No text
-      noButton.textContent =
-        noMessages[Math.min(noCount, noMessages.length - 1)];
+      noIndex = Math.min(noIndex + 1, noTexts.length - 1);
+      noBtn.textContent = noTexts[noIndex];
 
-      // Grow Yes gently
-      const currentSize = parseFloat(
-        window.getComputedStyle(yesButton).fontSize
-      );
-      yesButton.style.fontSize = `${currentSize * 1.25}px`;
-
-      // After 3 clicks, No starts moving a little
-      if (noCount >= 3) {
-        const x = Math.random() * 120 - 60;
-        const y = Math.random() * 40 - 20;
-        noButton.style.transform = `translate(${x}px, ${y}px)`;
-      }
-
-      noCount++;
+      yesSize += 4;
+      yesBtn.style.fontSize = yesSize + "px";
     }
 
-    function handleYes() {
-      const content = document.getElementById("content");
-
-      content.innerHTML = `
+    function yesClick() {
+      document.getElementById("app").innerHTML = `
         <div class="poem">
-          I knew you would hesitate,<br/>
-          you always like the tension.<br/>
-          You said yes a little late,<br/>
+          I knew you would hesitate,<br>
+          you always like the tension.<br>
+          You said yes a little late,<br>
           but right on time for me.
         </div>
 
-        <div class="porsche">
-          Yay.<br/>
-          You get a Porsche 🚗😉<br/>
+        <div class="reward">
+          Yay. You get a Porsche 🚗😉
           <a href="https://www.porsche.com" target="_blank">
-            Go pick your Porsche →
+            Go choose your Porsche →
           </a>
         </div>
       `;
