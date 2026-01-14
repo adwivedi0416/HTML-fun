@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forgiveness?</title>
+  <title>Just One Question</title>
 
   <style>
     body {
@@ -18,6 +18,7 @@
 
     .container {
       text-align: center;
+      max-width: 90%;
     }
 
     h1 {
@@ -49,11 +50,37 @@
       background-color: #e53935;
       color: white;
     }
+
+    .poem {
+      font-size: 22px;
+      color: #8b0033;
+      line-height: 1.6;
+    }
+
+    .porsche {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .porsche a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #b00020;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .porsche a:hover {
+      border-color: #b00020;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" id="content">
     <h1>Will you please forgive me?</h1>
 
     <div class="buttons">
@@ -90,8 +117,24 @@
     }
 
     function handleYes() {
-      document.body.innerHTML =
-        "<h1 style='color:#d81b60; font-family:Arial;'>Thank you for forgiving me 💖</h1>";
+      const content = document.getElementById("content");
+
+      content.innerHTML = `
+        <div class="poem">
+          I knew you would hesitate,<br/>
+          you always like the tension.<br/>
+          You said yes a little late,<br/>
+          but right on time for me.
+        </div>
+
+        <div class="porsche">
+          Yay.<br/>
+          You get a Porsche 🚗😉<br/>
+          <a href="https://www.porsche.com" target="_blank">
+            Go pick your Porsche →
+          </a>
+        </div>
+      `;
     }
   </script>
 </body>
