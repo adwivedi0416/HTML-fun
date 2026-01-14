@@ -4,11 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Forgiveness?</title>
-</head>
-<body>
-  <h1>Will you please forgive me?</h1>
 
-  <button onclick="alert('Yay 💖')">Yes</button>
-  <button>No</button>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f6dcdc;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #b00020;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .yes-button {
+      background-color: #4caf50;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .no-button {
+      background-color: #e53935;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Will you please forgive me?</h1>
+
+    <div class="buttons">
+      <button class="yes-button" onclick="handleYes()">Yes</button>
+      <button class="no-button" onmouseover="moveNo()">No</button>
+    </div>
+  </div>
+
+  <script>
+    function handleYes() {
+      document.body.innerHTML =
+        "<h1 style='color:#d81b60; font-family:Arial;'>Thank you 💖</h1>";
+    }
+
+    function moveNo() {
+      const noBtn = document.querySelector(".no-button");
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 80 - 40;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+  </script>
 </body>
 </html>
