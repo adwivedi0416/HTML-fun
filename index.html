@@ -120,4 +120,36 @@
       );
       yesButton.style.fontSize = `${currentSize * 1.25}px`;
 
-      // After 3 clicks, No starts
+      // After 3 clicks, No starts moving a little
+      if (noCount >= 3) {
+        const x = Math.random() * 120 - 60;
+        const y = Math.random() * 40 - 20;
+        noButton.style.transform = `translate(${x}px, ${y}px)`;
+      }
+
+      noCount++;
+    }
+
+    function handleYes() {
+      const content = document.getElementById("content");
+
+      content.innerHTML = `
+        <div class="poem">
+          I knew you would hesitate,<br/>
+          you always like the tension.<br/>
+          You said yes a little late,<br/>
+          but right on time for me.
+        </div>
+
+        <div class="porsche">
+          Yay.<br/>
+          You get a Porsche 🚗😉<br/>
+          <a href="https://www.porsche.com" target="_blank">
+            Go pick your Porsche →
+          </a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
